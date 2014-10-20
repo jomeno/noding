@@ -1,12 +1,16 @@
-module.exports = function mymodule(dir, ext, callback){
 var fs = require('fs');
+var path = require('path');
 
-fs.readdir(dir, function rd(err, data){
+module.exports = function (dir, ext, callback){
+
+fs.readdir(dir, function(err, data){
 if(err){
 return callback(err);
-}else{
-return callback(null, data);
 }
+data = data.filter(function acc(file){
+return path.extname(file) === '.'+ext;
+});
+callback(null, data);
 
 });
 
