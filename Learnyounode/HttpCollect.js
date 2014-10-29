@@ -6,18 +6,23 @@ http.get(url, function(response){
 response.setEncoding('utf8');
 response.on('data', function(chunk){
 
-if(collectedCount < 2){
+//if(collectedCount < 2){
 
-collected = collected + '\n' + chunk;
+collected += ' '+chunk;
 collectedCount += 1;
 
-}
-collected = collected.trim();
+//}
+
+collected = collected.ltrim();
 
 }).on('error', function(e){
 console.log("an error occurred : " + e);
 }).on('end', function(){
+//collected += ' ';
+console.log(collected.length)
+
 console.log(collected);
+//console.log(collected);
 
 });
 
