@@ -1,0 +1,2 @@
+node monitor.js
+pause

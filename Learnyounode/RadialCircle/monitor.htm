@@ -1,0 +1,25 @@
+<html>
+<head>
+<script>
+
+var fs = require('fs');
+
+var path = 'C:/Users/Jomeno/Google Drive/Capehi/RadialCirle/data.log';
+
+var bf = fs.readFileSync(path);
+var lines = bf.toString().split('akintayo');
+
+for(var i = 1; i < lines.length; i++){
+	console.log(lines[i])
+}
+
+
+</script>
+</head>
+
+<body>
+This is a test
+
+</body>
+
+</html>
