@@ -2,22 +2,25 @@ var fs = require('fs');
 var path = 'C:/Users/Jomeno/Google Drive/Capehi/RadialCirle/data.log';
 var clc = require('cli-color');
 
-var bf = fs.readFileSync(path);
-var lines = bf.toString().split('akintayo');
+var net = require('net');
+
+var bf = null;
+var lines = [];
 var logCount = 0;
+console.log('\nWELCOME TO RADIAL CIRCLE METOCEAN\n');
+console.log(clc.yellow('Metocean Server Started'));
+console.log(now());
 
-console.log(clc.red('This will be red'));
+var server = net.createServer(function(socket){
+	bf = fs.readFileSync(path);
+	lines = bf.toString().split('\n');
+	var data = lines[lines.length - 2];
 
-var intervalId = setInterval(function(){
-	// if(logCount > 5){
-		// console.log('\033[2J');
-		// logCount = 0;
-	// }
-	
-	console.log(lines[1]);
-	logCount++;
-}, 3000);
+	socket.end(data.toString())
+});
 
-// for(var i = 1; i < lines.length; i++){
-	// console.log(lines[i])
-// }
+server.listen(8080);
+
+function now(){
+	return new Date();
+}
