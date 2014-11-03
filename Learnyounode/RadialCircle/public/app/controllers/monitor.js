@@ -6,10 +6,14 @@
 
     // get readings from server
 
-    $http.get('/public/api').then(function (response) {
-        console.log('http call started')
-        models.readings[0] = response.data;
-    });
+    var poller = function () {
+        console.log('http call started');
+        $http.get('/public/api').then(function (response) {
+            models.readings[0] = response.data;
+        });
+    }
+
+    var intervalId = setInterval(poller, 3000);
 
 
     angular.extend($scope, {
