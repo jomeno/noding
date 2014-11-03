@@ -1,0 +1,13 @@
+﻿body {
+    background-color: #ddd;
+}
+
+.clientpanel h1, .clientpanel h3 {
+    text-align: center;
+}
+
+.clientpanel h1 {
+    background-color: #eee;
+    box-shadow: 5px 5px 5px #888888;
+    padding:10px 5px;
+}
